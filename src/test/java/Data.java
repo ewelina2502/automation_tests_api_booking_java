@@ -53,7 +53,7 @@ public class Data extends Faker{
     }
 
     public static String printJsonPatchbooking() {
-        String names = printFirstNameNorway();
+        String names = printUuid();
         String lnames = printLastNameNorway();
 
         return "{" +

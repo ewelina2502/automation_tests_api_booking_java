@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
+import java.util.UUID;
 
 
 public class Faker {
@@ -64,11 +65,10 @@ public class Faker {
         return randomGenerator.nextInt(9999);
     }
 
+    public static String printUuid() {
+        String uuid = UUID.randomUUID().toString();
+        return uuid;
+    }
 
-//    public static String printUuid() {
-//        String uuid = UUID.randomUUID().toString().replace("-", "");
-//        return uuid;
-//        UUID uuid = generator.generateRandomBasedUUID(secureRandom);
-//        return uuid.toString().replaceAll("-", "").toUpperCase();
-//    }
+
 }
