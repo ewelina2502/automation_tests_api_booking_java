@@ -2,6 +2,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import static io.restassured.RestAssured.*;
 
 public class BookingTests extends Data {
@@ -290,5 +291,8 @@ public class BookingTests extends Data {
         Assert.assertEquals(response.getStatusCode(),404);
         System.out.println("Body :" + response.getBody().asString());
     }
-}
+
+
+    }
+
 

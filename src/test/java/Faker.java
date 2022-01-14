@@ -66,9 +66,7 @@ public class Faker {
     }
 
     public static String printUuid() {
-        String uuid = UUID.randomUUID().toString();
-        return uuid;
+        return UUID.randomUUID().toString();
     }
-
 
 }
