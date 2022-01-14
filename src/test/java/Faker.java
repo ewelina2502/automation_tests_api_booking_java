@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
+
 public class Faker {
+
     public static String printDate() {
         Date dNow = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
@@ -49,8 +51,7 @@ public class Faker {
 
     public static String printAnimalUpper() {
         com.github.javafaker.Faker faker = new com.github.javafaker.Faker();
-//        String animalUpper = animal.substring(0, 1).toUpperCase() + animal.substring(1);
-        return faker.animal().name().substring(0, 1).toUpperCase();
+        return faker.animal().name().substring(0, 1).toUpperCase() + faker.animal().name().substring(1);
     }
 
     public static String printNeeds() {
@@ -62,4 +63,12 @@ public class Faker {
         Random randomGenerator = new Random();
         return randomGenerator.nextInt(9999);
     }
+
+
+//    public static String printUuid() {
+//        String uuid = UUID.randomUUID().toString().replace("-", "");
+//        return uuid;
+//        UUID uuid = generator.generateRandomBasedUUID(secureRandom);
+//        return uuid.toString().replaceAll("-", "").toUpperCase();
+//    }
 }
