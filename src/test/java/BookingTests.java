@@ -2,7 +2,6 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import static io.restassured.RestAssured.*;
 
 public class BookingTests extends Data {
@@ -11,7 +10,6 @@ public class BookingTests extends Data {
     public void postBooking() {
         String url = urlBooking();
         String contentType = "application/json";
-
         String body = printJsonBooking();
 
         Response response = RestAssured.
@@ -95,7 +93,6 @@ public class BookingTests extends Data {
     public void postAndPatchBooking() {
         String url = urlBooking();
         String contentType = "application/json";
-
         String bodyData = printJsonBooking();
 
         Response response = RestAssured.
@@ -113,7 +110,7 @@ public class BookingTests extends Data {
         int bookingid = response.jsonPath().getInt("bookingid");
         System.out.println("bookingid: "  + bookingid);
 
-        String url2 =  urlBooking() + "/" + bookingid;
+        String url_patch =  urlBooking() + "/" + bookingid;
         String cookies = cookies();
         String authorization = authorization();
         String bodyDataPatch = printJsonPatchbooking();
@@ -126,7 +123,7 @@ public class BookingTests extends Data {
                 header("Authorization", authorization).
                 header("Cookie", cookies).
                 when().
-                patch(url2).
+                patch(url_patch).
                 then().
                 extract().
                 response();
@@ -156,24 +153,24 @@ public class BookingTests extends Data {
         int bookingid = response.jsonPath().getInt("bookingid");
         System.out.println("bookingid: "  + bookingid);
 
-        String url2 = urlBooking() + "/" + bookingid;
+        String url_delete = urlBooking() + "/" + bookingid;
         String cookies = cookies();
         String authorization = authorization();
 
-        Response response2 = RestAssured.
+        Response response_delete = RestAssured.
                 given().
                 contentType(contentType).
                 cookie(cookies).
                 header("Authorization", authorization).
                 header("Cookie", cookies).
                 when().
-                delete(url2).
+                delete(url_delete).
                 then().
                 extract().
                 response();
 
-        Assert.assertEquals(response2.getStatusCode(),201);
-        System.out.println("status: " + response2.getBody().asString());
+        Assert.assertEquals(response_delete.getStatusCode(),201);
+        System.out.println("status: " + response_delete.getBody().asString());
     }
 
     @Test
@@ -292,7 +289,6 @@ public class BookingTests extends Data {
         System.out.println("Body :" + response.getBody().asString());
     }
 
-
-    }
+}
 
 

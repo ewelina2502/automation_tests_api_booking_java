@@ -20,9 +20,6 @@ public class Booking {
             this.checkin = checkin;
             this.checkout = checkout;
             this.additionalneeds = additionalneeds;
-
-
-
       }
 
       public void info() {
