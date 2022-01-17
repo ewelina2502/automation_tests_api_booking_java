@@ -13,7 +13,17 @@ public class Booking {
             }
 
       public Booking( String firstname, String lastname, int totalprice, boolean depositpaid, String checkin, String checkout, String additionalneeds) {
-            }
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.totalprice = totalprice;
+            this.depositpaid = depositpaid;
+            this.checkin = checkin;
+            this.checkout = checkout;
+            this.additionalneeds = additionalneeds;
+
+
+
+      }
 
       public void info() {
            System.out.println("firstname: " + firstname);
@@ -23,6 +33,7 @@ public class Booking {
            System.out.println("checkin: " + checkin);
            System.out.println("checkout: " + checkout);
            System.out.println("additionalneeds: " + additionalneeds);
-
       }
+
+
 }
