@@ -289,6 +289,57 @@ public class BookingTests extends Data {
         System.out.println("Body :" + response.getBody().asString());
     }
 
+    @Test
+    public void getBookingsDataFromJsonResponse() {
+        String url = urlBooking();
+        String contentType = "application/json";
+        String bodyData = printJsonBooking();
+
+        Response response = RestAssured.
+                given().
+                contentType(contentType).
+                body(bodyData).
+                when().
+                post(url).
+                then().
+                extract().
+                response();
+
+        Assert.assertEquals(response.getStatusCode(), 200);
+        System.out.println("Body :" + response.getBody().asString());
+        int bookingid = response.jsonPath().getInt("bookingid");
+        System.out.println("bookingid: "  + bookingid);
+
+        Response response_get = get("https://restful-booker.herokuapp.com/booking/" + bookingid);
+
+        System.out.println("status code: " + response_get.getStatusCode());
+        System.out.println("Body :" + response.getBody().asString());
+
+        String firstname = response_get.jsonPath().get("firstname");
+        System.out.println("firstname: " + firstname);
+
+        String lastname = response_get.jsonPath().get("lastname");
+        System.out.println("lastname: " + lastname);
+
+        int totalprice = response_get.jsonPath().getInt("totalprice");
+        System.out.println("totalprice: " + totalprice);
+
+        boolean depositpaid = response_get.jsonPath().getBoolean("depositpaid");
+        System.out.println("depositpaid: " + depositpaid);
+
+        String bookingdates = response_get.jsonPath().getString("bookingdates");
+        System.out.println("bookingdates: " + bookingdates);
+
+        String bookingdates_checkin = response_get.jsonPath().getString("bookingdates.checkin");
+        System.out.println("checkin: " + bookingdates_checkin);
+
+        String additionalneeds = response_get.jsonPath().get("additionalneeds");
+        System.out.println("additionalneeds: " + additionalneeds);
+
+        int statusCode = response_get.getStatusCode();
+        Assert.assertEquals(statusCode, 200);
+    }
+
 }
 
 
