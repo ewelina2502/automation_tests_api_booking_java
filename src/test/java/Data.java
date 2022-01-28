@@ -18,7 +18,7 @@ public class Data extends Faker{
         String needs = printNeeds();
         int generator = printGenerator();
         String date = printDate();
-        String datetomorrow = String.valueOf(printTomorrow());
+        String datetomorrow = printTomorrow();
 
         return "{" +
                 " \"firstname\": " + '"' + names + '"' + ","+

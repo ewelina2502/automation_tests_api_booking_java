@@ -14,10 +14,9 @@ public class Faker {
         return ft.format(dNow);
     }
 
-    public static LocalDate printTomorrow() {
+    public static String printTomorrow() {
         LocalDate today = LocalDate.now();
-//        LocalDate tomorrow = today.plusDays(1);
-        return today.plusDays(1);
+        return String.valueOf(today.plusDays(1));
     }
 
     public static String printFirstNameFaker() {
