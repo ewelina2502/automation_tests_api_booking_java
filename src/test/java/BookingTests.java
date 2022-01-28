@@ -292,7 +292,4 @@ public class BookingTests extends Data {
         System.out.println("Body :" + response.getBody().asString());
     }
 
-
-    }
-
-
+}

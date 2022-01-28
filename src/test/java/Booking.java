@@ -21,8 +21,6 @@ public class Booking {
             this.checkout = checkout;
             this.additionalneeds = additionalneeds;
 
-
-
       }
 
       public void info() {
@@ -34,6 +32,4 @@ public class Booking {
            System.out.println("checkout: " + checkout);
            System.out.println("additionalneeds: " + additionalneeds);
       }
-
-
 }
