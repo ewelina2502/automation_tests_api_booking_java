@@ -1,4 +1,4 @@
-public class Data extends Faker{
+public class Data extends Faker {
 
     public static String urlBooking() {
         return "https://restful-booker.herokuapp.com/booking";

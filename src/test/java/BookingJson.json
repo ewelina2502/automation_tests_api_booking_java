@@ -1,0 +1,11 @@
+{
+  "firstname": "Damien",
+  "lastname": "Gorczany",
+  "totalprice": 2710,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2022-02-05",
+    "checkout": "2022-02-06"
+  },
+  "additionalneeds": "Lunch"
+}

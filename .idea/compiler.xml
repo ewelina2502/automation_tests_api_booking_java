@@ -9,6 +9,9 @@
         <module name="api_tests_booking" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api_tests_booking" target="15" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
