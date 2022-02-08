@@ -8,16 +8,17 @@ public class BookingTests extends Data {
 
     @Test
     public void postBooking() {
-        String url = urlBooking();
+/*    String url = urlBooking();
+      String body = printJsonBooking();
+ */
         String contentType = "application/json";
-        String body = printJsonBooking();
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(body).
+                body(printJsonBooking()).
                 when().
-                post(url).
+                post(urlBooking()).
                 then().
                 extract().
                 response();
@@ -48,16 +49,14 @@ public class BookingTests extends Data {
 
     @Test
     public void postAndPutBooking() {
-        String url = urlBooking();
         String contentType = "application/json";
-        String bodyData = printJsonBooking();
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyData).
+                body(printJsonBooking()).
                 when().
-                post(url).
+                post(urlBooking()).
                 then().
                 extract().
                 response();
@@ -91,16 +90,14 @@ public class BookingTests extends Data {
 
     @Test
     public void postAndPatchBooking() {
-        String url = urlBooking();
         String contentType = "application/json";
-        String bodyData = printJsonBooking();
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyData).
+                body(printJsonBooking()).
                 when().
-                post(url).
+                post(urlBooking()).
                 then().
                 extract().
                 response();
@@ -111,17 +108,14 @@ public class BookingTests extends Data {
         System.out.println("bookingid: "  + bookingid);
 
         String url_patch =  urlBooking() + "/" + bookingid;
-        String cookies = cookies();
-        String authorization = authorization();
-        String bodyDataPatch = printJsonPatchbooking();
 
         Response response_patch = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyDataPatch).
-                cookie(cookies).
-                header("Authorization", authorization).
-                header("Cookie", cookies).
+                body(printJsonPatchbooking()).
+                cookie(cookies()).
+                header("Authorization", authorization()).
+                header("Cookie", cookies()).
                 when().
                 patch(url_patch).
                 then().
@@ -134,16 +128,14 @@ public class BookingTests extends Data {
 
     @Test
     public void postAndDeleteBooking() {
-        String url = urlBooking();
         String contentType = "application/json";
-        String bodyData = printJsonBooking();
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyData).
+                body(printJsonBooking()).
                 when().
-                post(url).
+                post(urlBooking()).
                 then().
                 extract().
                 response();
@@ -154,15 +146,13 @@ public class BookingTests extends Data {
         System.out.println("bookingid: "  + bookingid);
 
         String url_delete = urlBooking() + "/" + bookingid;
-        String cookies = cookies();
-        String authorization = authorization();
 
         Response response_delete = RestAssured.
                 given().
                 contentType(contentType).
-                cookie(cookies).
-                header("Authorization", authorization).
-                header("Cookie", cookies).
+//                cookie(cookies()).
+                header("Authorization", authorization()).
+                header("Cookie", cookies()).
                 when().
                 delete(url_delete).
                 then().
@@ -175,16 +165,14 @@ public class BookingTests extends Data {
 
     @Test
     public void postAndGetBookingById() {
-        String url = urlBooking();
         String contentType = "application/json";
-        String bodyData = printJsonBooking();
 
         Response response_post = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyData).
+                body(printJsonBooking()).
                 when().
-                post(url).
+                post(urlBooking()).
                 then().
                 extract().
                 response();
@@ -231,16 +219,14 @@ public class BookingTests extends Data {
 
     @Test
     public void postBookingBadBoolean() {
-        String url = "https://restful-booker.herokuapp.com/booking";
         String contentType = "application/json";
-        String bodyData = printBadJsonBoolean();
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyData).
+                body(printBadJsonBoolean()).
                 when().
-                post(url).
+                post(urlBooking()).
                 then().
                 extract().
                 response();
@@ -251,16 +237,14 @@ public class BookingTests extends Data {
 
     @Test
     public void postBookingBadInt() {
-        String url = "https://restful-booker.herokuapp.com/booking";
         String contentType = "application/json";
-        String bodyData = printBadJsonStringInt();
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyData).
+                body(printBadJsonStringInt()).
                 when().
-                post(url).
+                post(urlBooking()).
                 then().
                 extract().
                 response();
@@ -271,16 +255,14 @@ public class BookingTests extends Data {
 
     @Test
     public void postBookingBadMethodDel() {
-        String url = urlBooking();
         String contentType = "application/json";
-        String bodyData = printJsonBooking();
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyData).
+                body(printJsonBooking()).
                 when().
-                delete(url).
+                delete(urlBooking()).
                 then().
                 extract().
                 response();
@@ -291,16 +273,14 @@ public class BookingTests extends Data {
 
     @Test
     public void getBookingsDataFromJsonResponse() {
-        String url = urlBooking();
         String contentType = "application/json";
-        String bodyData = printJsonBooking();
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(bodyData).
+                body(printJsonBooking()).
                 when().
-                post(url).
+                post(urlBooking()).
                 then().
                 extract().
                 response();

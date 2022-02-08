@@ -9,7 +9,7 @@ public class DraftTests extends Data {
     public void postBooking() {
         String url = urlBooking();
         String contentType = "application/json";
-        String body = printJsonBooking();
+        String body =jsonObject();
 
         Response response = RestAssured.
                 given().
