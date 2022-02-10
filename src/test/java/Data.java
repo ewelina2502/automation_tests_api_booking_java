@@ -90,10 +90,10 @@ public class Data extends Faker {
                 "}";
     }
 
-    public static String jsonObject() {
-        Booking first_booking = new Booking("Adam", "Kowalski", 123, true, "2022-01-28", "2022-01-28", "Breakfast" );
-        Gson json = new Gson();
-        return json.toJson(first_booking);
-    }
+//    public static String jsonObject() {
+//        Booking first_booking = new Booking("Adam", "Kowalski", 123, true,  "{","2022-01-28", "2022-01-28}", "Breakfast" );
+//        Gson json = new Gson();
+//        return json.toJson(first_booking);
+//    }
 
 }

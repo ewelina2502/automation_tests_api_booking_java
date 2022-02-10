@@ -34,6 +34,12 @@ public class Faker {
         return faker.name().firstName();
     }
 
+    public static String printFirstNameLength() {
+        com.github.javafaker.Faker faker = new com.github.javafaker.Faker(new Locale("no"));
+         return faker.name().firstName().substring(0,1).toUpperCase() + faker.name().firstName().substring(5).toLowerCase();
+
+    }
+
     public static String printLastNameNorway() {
         com.github.javafaker.Faker faker = new com.github.javafaker.Faker(new Locale("no"));
         return faker.name().lastName();

@@ -1,31 +1,24 @@
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 public class DraftTests extends Data {
 
-    @Test
-    public void postBooking() {
-        String url = urlBooking();
-        String contentType = "application/json";
-        String body =jsonObject();
 
-        Response response = RestAssured.
-                given().
-                contentType(contentType).
-                body(body).
-                when().
-                post(url).
-                then().
-                extract().
-                response();
+    public static void main(String[] args) {
+        String needs = "Lunches";
+        int l = needs.length();
+//        char chars;
+//        System.out.println(l);
 
-        Assert.assertEquals(response.getStatusCode(),200);
-        System.out.println("Body :" + response.getBody().asString());
+        for (int i = 0; i < 1; i++) {
+//            chars = needs.charAt(i);
+
+            if (l == 5 ) {
+                System.out.println(needs + " has 5 chars");
+            } else if (l > 10) {
+                System.out.println(needs + " has "+ l + " chars");
+            } else {
+                System.out.println("It isn't 5 chars");
+            }
+        }
     }
-
-
 }
 
 

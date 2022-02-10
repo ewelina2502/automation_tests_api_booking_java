@@ -4,7 +4,7 @@ public class Booking {
       public String lastname;
       public int totalprice;
       public boolean depositpaid;
-      //    public String bookingdates;
+      public String bookingdates;
       public String checkin;
       public String checkout;
       public String additionalneeds;
@@ -12,11 +12,12 @@ public class Booking {
       public Booking() {
             }
 
-      public Booking( String firstname, String lastname, int totalprice, boolean depositpaid, String checkin, String checkout, String additionalneeds) {
+      public Booking( String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates, String checkin, String checkout, String additionalneeds) {
             this.firstname = firstname;
             this.lastname = lastname;
             this.totalprice = totalprice;
             this.depositpaid = depositpaid;
+            this.bookingdates = bookingdates;
             this.checkin = checkin;
             this.checkout = checkout;
             this.additionalneeds = additionalneeds;
@@ -28,6 +29,7 @@ public class Booking {
            System.out.println("lastname: " + lastname);
            System.out.println("totalprice: " + totalprice);
            System.out.println("depositpaid: " + depositpaid);
+          System.out.println("bookingdates:" + bookingdates);
            System.out.println("checkin: " + checkin);
            System.out.println("checkout: " + checkout);
            System.out.println("additionalneeds: " + additionalneeds);
