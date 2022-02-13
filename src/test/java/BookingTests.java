@@ -196,12 +196,71 @@ public class BookingTests extends Data {
     }
 
     @Test
+    public void postPatchDelGetIdBooking() {
+        String contentType = "application/json";
+
+        Response response = RestAssured.
+                given().
+                contentType(contentType).
+                body(printJsonBooking()).
+                when().
+                post(urlBooking()).
+                then().
+                extract().
+                response();
+
+        Assert.assertEquals(response.getStatusCode(), 200);
+        System.out.println("Body :" + response.getBody().asString());
+        int bookingid = response.jsonPath().getInt("bookingid");
+        System.out.println("bookingid: "  + bookingid);
+
+        String url_patch =  urlBooking() + "/" + bookingid;
+
+        Response response_patch = RestAssured.
+                given().
+                contentType(contentType).
+                body(printJsonPatchbooking()).
+                cookie(cookies()).
+                header("Authorization", authorization()).
+                header("Cookie", cookies()).
+                when().
+                patch(url_patch).
+                then().
+                extract().
+                response();
+
+        Assert.assertEquals(response_patch.getStatusCode(),200);
+        System.out.println("Body after Patch: " + response_patch.getBody().asString());
+
+        String url_delete = urlBooking() + "/" + bookingid;
+        Response response_delete = RestAssured.
+                given().
+                contentType(contentType).
+                header("Authorization", authorization()).
+                header("Cookie", cookies()).
+                when().
+                delete(url_delete).
+                then().
+                extract().
+                response();
+
+        Assert.assertEquals(response_delete.getStatusCode(),201);
+        System.out.println("status delete : " + response_delete.getBody().asString());
+
+        int bookingidget = response.jsonPath().getInt("bookingid");
+        String get_url = urlBooking() + "/"+ bookingidget;
+        Response getidresponse = get(get_url);
+        Assert.assertEquals(getidresponse.getStatusCode(),404);
+        System.out.println(getidresponse.statusCode() + " Not found id: " + bookingidget);
+    }
+
+    @Test
     public void getBookingsReturnsBadUrl() {
         Response response = get("https://restful-booker.herokuapp.com/bookings");
 
-        System.out.println("Response :" + response.asString());
+        System.out.println("Response: " + response.asString());
         System.out.println("status code: " + response.getStatusCode());
-        System.out.println("Body :" + response.getBody().asString());
+        System.out.println("Body: " + response.getBody().asString());
 
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 404);
