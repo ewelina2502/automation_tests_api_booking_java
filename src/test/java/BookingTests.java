@@ -1,10 +1,29 @@
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 
 public class BookingTests extends Data {
+
+    @BeforeTest
+    public void postBookingBefore() {
+        String contentType = "application/json";
+
+        Response response = RestAssured.
+                given().
+                contentType(contentType).
+                body(printJsonBooking()).
+                when().
+                post(urlBooking()).
+                then().
+                extract().
+                response();
+
+        Assert.assertEquals(response.getStatusCode(),200);
+        System.out.println("Body :" + response.getBody().asString());
+    }
 
     @Test
     public void postBooking() {
@@ -123,7 +142,7 @@ public class BookingTests extends Data {
                 response();
 
         Assert.assertEquals(response_patch.getStatusCode(),200);
-        System.out.println("status: " + response_patch.getBody().asString());
+        System.out.println("Body after patch: " + response_patch.getBody().asString());
     }
 
     @Test

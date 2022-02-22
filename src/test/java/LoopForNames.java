@@ -18,5 +18,10 @@ public class LoopForNames extends Faker {
         for (String value : values) {
             System.out.println(value);
         }
+
     }
+
+
+
+
 }
