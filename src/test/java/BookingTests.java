@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.*;
 public class BookingTests extends Data {
 
     @BeforeTest
-    public void postBookingBefore() {
+    public static int postBookingBeforeTest() {
         String contentType = "application/json";
 
         Response response = RestAssured.
@@ -23,7 +23,18 @@ public class BookingTests extends Data {
 
         Assert.assertEquals(response.getStatusCode(),200);
         System.out.println("Body :" + response.getBody().asString());
+        return response.jsonPath().getInt("bookingid");
     }
+
+    @Test
+    public void getIdAndBeforeTest() {
+
+        String get_url = urlBooking();
+        Response response = RestAssured.get(get_url + "/" + postBookingBeforeTest());
+        Assert.assertEquals(response.getStatusCode(),200);
+        System.out.println("Body :" + response.getBody().asString());
+    }
+
 
     @Test
     public void postBooking() {
@@ -397,6 +408,38 @@ public class BookingTests extends Data {
         int statusCode = response_get.getStatusCode();
         Assert.assertEquals(statusCode, 200);
     }
+
+    @BeforeTest
+    public static int postBookingBefore() {
+        String contentType = "application/json";
+
+        Response response = RestAssured.
+                given().
+                contentType(contentType).
+                body(printJsonBooking()).
+                when().
+                post(urlBooking()).
+                then().
+                extract().
+                response();
+
+        Assert.assertEquals(response.getStatusCode(),200);
+        System.out.println("Body :" + response.getBody().asString());
+        int bookingidget = response.jsonPath().getInt("bookingid");
+        System.out.println(bookingidget);
+        return bookingidget;
+    }
+
+
+    @Test
+    public void getId() {
+
+        String get_url = urlBooking();
+        Response response = RestAssured.get(get_url + "/" + postBookingBefore());
+        Assert.assertEquals(response.getStatusCode(),200);
+        System.out.println("Body :" + response.getBody().asString());
+    }
+
 
 }
 
