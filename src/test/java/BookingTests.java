@@ -1,13 +1,11 @@
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 
 public class BookingTests extends Data {
 
-    @BeforeTest
     public static int postBookingBeforeTest() {
         String contentType = "application/json";
 
@@ -27,14 +25,12 @@ public class BookingTests extends Data {
     }
 
     @Test
-    public void getIdAndBeforeTest() {
-
+    public void postAndGetBookingById() {
         String get_url = urlBooking();
         Response response = RestAssured.get(get_url + "/" + postBookingBeforeTest());
         Assert.assertEquals(response.getStatusCode(),200);
         System.out.println("Body :" + response.getBody().asString());
     }
-
 
     @Test
     public void postBooking() {
@@ -81,22 +77,7 @@ public class BookingTests extends Data {
     public void postAndPutBooking() {
         String contentType = "application/json";
 
-        Response response = RestAssured.
-                given().
-                contentType(contentType).
-                body(printJsonBooking()).
-                when().
-                post(urlBooking()).
-                then().
-                extract().
-                response();
-
-        Assert.assertEquals(response.getStatusCode(), 200);
-        System.out.println("Body :" + response.getBody().asString());
-        int bookingid = response.jsonPath().getInt("bookingid");
-        System.out.println("bookingid: "  + bookingid);
-
-        String put_url = urlBooking() + "/"+ bookingid;
+        String put_url = urlBooking() + "/"+ postBookingBeforeTest();
         String cookies = cookies();
         String authorization = authorization();
         String bodyDataPut = printJsonPutBooking();
@@ -121,23 +102,7 @@ public class BookingTests extends Data {
     @Test
     public void postAndPatchBooking() {
         String contentType = "application/json";
-
-        Response response = RestAssured.
-                given().
-                contentType(contentType).
-                body(printJsonBooking()).
-                when().
-                post(urlBooking()).
-                then().
-                extract().
-                response();
-
-        Assert.assertEquals(response.getStatusCode(), 200);
-        System.out.println("Body :" + response.getBody().asString());
-        int bookingid = response.jsonPath().getInt("bookingid");
-        System.out.println("bookingid: "  + bookingid);
-
-        String url_patch =  urlBooking() + "/" + bookingid;
+        String url_patch =  urlBooking() + "/" + postBookingBeforeTest();
 
         Response response_patch = RestAssured.
                 given().
@@ -159,28 +124,11 @@ public class BookingTests extends Data {
     @Test
     public void postAndDeleteBooking() {
         String contentType = "application/json";
-
-        Response response = RestAssured.
-                given().
-                contentType(contentType).
-                body(printJsonBooking()).
-                when().
-                post(urlBooking()).
-                then().
-                extract().
-                response();
-
-        Assert.assertEquals(response.getStatusCode(), 200);
-//        System.out.println("Body :" + response.getBody().asString());
-        int bookingid = response.jsonPath().getInt("bookingid");
-        System.out.println("bookingid: "  + bookingid);
-
-        String url_delete = urlBooking() + "/" + bookingid;
+        String url_delete = urlBooking() + "/" + postBookingBeforeTest();
 
         Response response_delete = RestAssured.
                 given().
                 contentType(contentType).
-//                cookie(cookies()).
                 header("Authorization", authorization()).
                 header("Cookie", cookies()).
                 when().
@@ -193,37 +141,6 @@ public class BookingTests extends Data {
         System.out.println("status: " + response_delete.getBody().asString());
     }
 
-    @Test
-    public void postAndGetBookingById() {
-        String contentType = "application/json";
-
-        Response response_post = RestAssured.
-                given().
-                contentType(contentType).
-                body(printJsonBooking()).
-                when().
-                post(urlBooking()).
-                then().
-                extract().
-                response();
-
-        Assert.assertEquals(response_post.getStatusCode(), 200);
-        System.out.println("Body :" + response_post.getBody().asString());
-        int bookingid = response_post.jsonPath().getInt("bookingid");
-        System.out.println("bookingid: "  + bookingid);
-
-        String url_get = urlBooking() + "/" + bookingid;
-        Response response = RestAssured.
-                given().
-                get(url_get).
-                then().
-                statusCode(200).
-                extract().
-                response();
-
-        Assert.assertEquals(response.getStatusCode(),200);
-        System.out.println("Body after post: " + response.getBody().asString());
-    }
 
     @Test
     public void postPatchDelGetIdBooking() {
@@ -409,36 +326,6 @@ public class BookingTests extends Data {
         Assert.assertEquals(statusCode, 200);
     }
 
-    @BeforeTest
-    public static int postBookingBefore() {
-        String contentType = "application/json";
-
-        Response response = RestAssured.
-                given().
-                contentType(contentType).
-                body(printJsonBooking()).
-                when().
-                post(urlBooking()).
-                then().
-                extract().
-                response();
-
-        Assert.assertEquals(response.getStatusCode(),200);
-        System.out.println("Body :" + response.getBody().asString());
-        int bookingidget = response.jsonPath().getInt("bookingid");
-        System.out.println(bookingidget);
-        return bookingidget;
-    }
-
-
-    @Test
-    public void getId() {
-
-        String get_url = urlBooking();
-        Response response = RestAssured.get(get_url + "/" + postBookingBefore());
-        Assert.assertEquals(response.getStatusCode(),200);
-        System.out.println("Body :" + response.getBody().asString());
-    }
 
 
 }
