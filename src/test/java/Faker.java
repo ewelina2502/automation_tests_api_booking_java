@@ -82,8 +82,8 @@ public class Faker {
         int l = meal.length();
 
         for (int i = 0; i < 1; i++) {
-            if (l == 5 ) {
-                System.out.println(meal +" has 5 chars it must be Lunch");
+            if (l == 5) {
+                System.out.println(meal + " has 5 chars it must be Lunch");
             } else if (l == 4) {
                 System.out.println(meal + " has 4 chars it must be Fish");
             } else if (l == 6) {

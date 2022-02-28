@@ -1,6 +1,9 @@
-import com.solidfire.gson.Gson;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.testng.Assert;
 
 public class Data extends Faker {
+
 
     public static String urlBooking() {
         return "https://restful-booker.herokuapp.com/booking";
@@ -12,6 +15,24 @@ public class Data extends Faker {
 
     public static String authorization() {
         return "Basic YWRtaW46cGFzc3dvcmQxMjM=";
+    }
+
+    public static int postBookingBeforeTest() {
+        String contentType = "application/json";
+
+        Response response = RestAssured.
+                given().
+                contentType(contentType).
+                body(printJsonBooking()).
+                when().
+                post(urlBooking()).
+                then().
+                extract().
+                response();
+
+        Assert.assertEquals(response.getStatusCode(),200);
+        System.out.println("Body :" + response.getBody().asString());
+        return response.jsonPath().getInt("bookingid");
     }
 
     public static String printJsonBooking() {

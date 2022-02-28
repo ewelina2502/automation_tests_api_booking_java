@@ -6,24 +6,6 @@ import static io.restassured.RestAssured.*;
 
 public class BookingTests extends Data {
 
-    public static int postBookingBeforeTest() {
-        String contentType = "application/json";
-
-        Response response = RestAssured.
-                given().
-                contentType(contentType).
-                body(printJsonBooking()).
-                when().
-                post(urlBooking()).
-                then().
-                extract().
-                response();
-
-        Assert.assertEquals(response.getStatusCode(),200);
-        System.out.println("Body :" + response.getBody().asString());
-        return response.jsonPath().getInt("bookingid");
-    }
-
     @Test
     public void postAndGetBookingById() {
         String get_url = urlBooking();
@@ -158,6 +140,7 @@ public class BookingTests extends Data {
 
         Assert.assertEquals(response.getStatusCode(), 200);
         System.out.println("Body :" + response.getBody().asString());
+
         int bookingid = response.jsonPath().getInt("bookingid");
         System.out.println("bookingid: "  + bookingid);
 
@@ -194,11 +177,10 @@ public class BookingTests extends Data {
         Assert.assertEquals(response_delete.getStatusCode(),201);
         System.out.println("status delete : " + response_delete.getBody().asString());
 
-        int bookingidget = response.jsonPath().getInt("bookingid");
-        String get_url = urlBooking() + "/"+ bookingidget;
+        String get_url = urlBooking() + "/"+ bookingid;
         Response getidresponse = get(get_url);
         Assert.assertEquals(getidresponse.getStatusCode(),404);
-        System.out.println(getidresponse.statusCode() + " Not found id: " + bookingidget);
+        System.out.println(getidresponse.statusCode() + " Not found id: " + bookingid);
     }
 
     @Test
