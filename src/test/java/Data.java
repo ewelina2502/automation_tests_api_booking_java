@@ -77,7 +77,7 @@ public class Data extends Faker {
 
     public static String printJsonPatchbooking() {
         String names = printUuid();
-        String lnames = printLastNameNorway();
+        String lnames = printSpecjalSign();
 
         return "{" +
                 " \"firstname\": " + '"' + names + '"' + ","+

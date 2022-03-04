@@ -45,6 +45,13 @@ public class Faker {
         return faker.name().lastName();
     }
 
+    public static String  printSpecjalSign() {
+        String[] specjalName = {"!", "@", "#", "$", "%"};
+        String specjal = specjalName[new Random().nextInt(specjalName.length)];
+        com.github.javafaker.Faker faker = new com.github.javafaker.Faker(new Locale("no"));
+        return faker.name().lastName() + specjal;
+    }
+
     public static String printAnimal() {
         com.github.javafaker.Faker faker = new com.github.javafaker.Faker(new Locale("no"));
         return faker.animal().name();
