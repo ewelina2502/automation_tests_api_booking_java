@@ -111,6 +111,25 @@ public class Data extends Faker {
                 "}";
     }
 
+    public static String printAssertJsonBooking() {
+        String lnames = printLastNameNorway();
+        String needs = printNeeds();
+        int generator = printGenerator();
+        String date = printDate();
+        String datetomorrow = printTomorrow();
+
+        return "{" +
+                " \"firstname\": \"Aldona\"," +
+                " \"lastname\": " +  '"' + lnames + '"' + "," +
+                " \"totalprice\": "  + generator + "," +
+                " \"depositpaid\": \"true\"," +
+                " \"bookingdates\":"  +
+                " { \"checkin\": " + '"' + date + '"'+ "," +
+                " \"checkout\": " + '"' + datetomorrow + '"' + "}," +
+                " \"additionalneeds\": " + '"' + needs + '"' +
+                "}";
+    }
+
 //    public static String jsonObject() {
 //        Booking first_booking = new Booking("Adam", "Kowalski", 123, true,  "{","2022-01-28", "2022-01-28}", "Breakfast" );
 //        Gson json = new Gson();
