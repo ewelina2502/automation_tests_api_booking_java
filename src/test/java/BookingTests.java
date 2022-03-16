@@ -202,7 +202,7 @@ public class BookingTests extends Data {
         int bookingid = response.jsonPath().getInt("bookingid");
         System.out.println("bookingid: " + bookingid);
 
-        Response response_get = get("https://restful-booker.herokuapp.com/booking/" + bookingid);
+        Response response_get = get(urlBooking() + "/" + bookingid);
 
         System.out.println("status code: " + response_get.getStatusCode());
         System.out.println("Body :" + response.getBody().asString());

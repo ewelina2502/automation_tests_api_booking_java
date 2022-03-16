@@ -2,7 +2,7 @@ import com.solidfire.gson.Gson;
 
 public class BookingObject extends Faker {
 
-    public static  void main(String[] args) {
+    public BookingObject() {
 
         Booking first_booking = new Booking("Adam", "Kowalski", 123, true, "{", "2022-01-28", "2022-01-28", "Breakfast" );
 //        first_booking.info();

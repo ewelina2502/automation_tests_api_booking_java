@@ -29,7 +29,7 @@ public class Booking {
            System.out.println("lastname: " + lastname);
            System.out.println("totalprice: " + totalprice);
            System.out.println("depositpaid: " + depositpaid);
-          System.out.println("bookingdates:" + bookingdates);
+           System.out.println("bookingdates:" + bookingdates);
            System.out.println("checkin: " + checkin);
            System.out.println("checkout: " + checkout);
            System.out.println("additionalneeds: " + additionalneeds);
