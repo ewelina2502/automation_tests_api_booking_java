@@ -2,6 +2,9 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.List;
+
 import static io.restassured.RestAssured.*;
 
 public class BookingTests extends Data {
@@ -32,7 +35,8 @@ public class BookingTests extends Data {
                 response();
 
         Assert.assertEquals(response.getStatusCode(),200);
-        System.out.println("Body :" + response.getBody().asString());
+        System.out.println("Body: " + response.getBody().asString());
+        System.out.println(response.getBody().asPrettyString());
     }
 
     @Test
@@ -45,6 +49,18 @@ public class BookingTests extends Data {
 
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 200);
+    }
+
+    @Test
+    public void getBookingsReturnList() {
+        Response response = get(Data.urlBooking());
+        System.out.println("Body :" + response.getBody().asString());
+
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals(statusCode, 200);
+
+        List<Object> bookingId = response.jsonPath().getList("bookingid");
+        System.out.println("List of Ids: " + bookingId);
     }
 
     @Test
@@ -229,7 +245,8 @@ public class BookingTests extends Data {
     public void getBookingsReturnsBadMethod() {
         Response response = post(urlBooking());
 
-        System.out.println("status code: " + response.getStatusCode());
+        System.out.println("Expected status code: 415" );
+        System.out.println("Received status code: " + response.getStatusCode());
         System.out.println("Body :" + response.getBody().asString());
 
         int statusCode = response.getStatusCode();
