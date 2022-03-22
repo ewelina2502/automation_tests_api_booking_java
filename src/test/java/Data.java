@@ -17,12 +17,16 @@ public class Data extends Faker {
         return "Basic YWRtaW46cGFzc3dvcmQxMjM=";
     }
 
+    public static String contentType() {
+        return "application/json";
+    }
+
     public static int postBookingBeforeTest() {
         String contentType = "application/json";
 
         Response response = RestAssured.
                 given().
-                contentType(contentType).
+                contentType(contentType()).
                 body(printJsonBooking()).
                 when().
                 post(urlBooking()).
