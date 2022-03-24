@@ -3,6 +3,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 
 import static io.restassured.RestAssured.get;
@@ -10,13 +11,14 @@ import static io.restassured.RestAssured.get;
 public class DraftTests extends Data {
 
     @Test
-    public void getReturnListofParameter() {
+    public void postWithJson() {
+        File file = new File("C:\\Users\\eweli\\IdeaProjects\\automation_tests_api_booking_java\\src\\test\\java\\create_booking.json");
         String contentType = "application/json";
 
         Response response = RestAssured.
                 given().
                 contentType(contentType).
-                body(printJsonBooking()).
+                body(file).
                 when().
                 post(urlBooking()).
                 then().
@@ -26,29 +28,7 @@ public class DraftTests extends Data {
         Assert.assertEquals(response.getStatusCode(), 200);
         System.out.println("Body :" + response.getBody().asString());
 
-        int bookingid = response.jsonPath().getInt("bookingid");
-        System.out.println("bookingid: "  + bookingid);
-
-        String url_patch =  urlBooking() + "/" + bookingid;
-
-        Response response_patch = RestAssured.
-                given().
-                contentType(contentType).
-                body(printJsonPatchbooking()).
-                cookie(cookies()).
-                header("Authorization", authorization()).
-                header("Cookie", cookies()).
-                when().
-                patch(url_patch).
-                then().
-                extract().
-                response();
-
-        Assert.assertEquals(response_patch.getStatusCode(),200);
-        System.out.println("Body after Patch: " + response_patch.getBody().asString());
-
     }
-
 
 
 }
