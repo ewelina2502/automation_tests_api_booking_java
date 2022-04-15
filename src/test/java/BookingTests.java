@@ -3,8 +3,8 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
-
 import static io.restassured.RestAssured.*;
 
 public class BookingTests extends Data {
@@ -68,6 +68,32 @@ public class BookingTests extends Data {
                 get(urlBooking()).
                 then().
                 statusCode(200);
+    }
+
+    @Test
+    public void postWithJson() {
+        File file = new File("C:\\Users\\Ewelina\\api_tests_booking\\src\\test\\java\\create_booking.json");
+        String contentType = "application/json";
+
+        Response response = RestAssured.
+                given().
+                contentType(contentType).
+                body(file).
+                when().
+                post(urlBooking()).
+                then().
+                extract().
+                response();
+
+        Assert.assertEquals(response.getStatusCode(), 200);
+        System.out.println("Body :" + response.getBody().asString());
+
+        int bookingid = response.jsonPath().getInt("bookingid");
+        Response response_get = get(urlBooking() + "/" + bookingid);
+
+        String firstname = response_get.jsonPath().get("firstname");
+        Assert.assertEquals("Ewelina", firstname);
+        System.out.println("firstname: " + firstname);
     }
 
     @Test
@@ -212,6 +238,7 @@ public class BookingTests extends Data {
 
         String firstname = response_get.jsonPath().get("firstname");
         Assert.assertEquals("Aldona", firstname);
+        System.out.println("firstname: " + firstname);
 
     }
 

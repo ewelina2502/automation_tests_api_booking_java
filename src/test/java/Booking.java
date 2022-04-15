@@ -1,3 +1,5 @@
+import java.lang.constant.Constable;
+
 public class Booking {
 
       public String firstname;
@@ -12,7 +14,9 @@ public class Booking {
       public Booking() {
             }
 
-      public Booking( String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates, String checkin, String checkout, String additionalneeds) {
+
+
+    public Booking (String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates, String checkin, String checkout, String additionalneeds) {
             this.firstname = firstname;
             this.lastname = lastname;
             this.totalprice = totalprice;
@@ -24,6 +28,7 @@ public class Booking {
 
       }
 
+
       public void info() {
            System.out.println("firstname: " + firstname);
            System.out.println("lastname: " + lastname);
@@ -34,6 +39,9 @@ public class Booking {
            System.out.println("checkout: " + checkout);
            System.out.println("additionalneeds: " + additionalneeds);
       }
+
+
+
 
 
 }

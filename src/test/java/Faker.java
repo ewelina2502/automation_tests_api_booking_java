@@ -8,6 +8,8 @@ import java.util.UUID;
 
 public class Faker {
 
+
+
     public static String printDate() {
         Date dNow = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
@@ -101,6 +103,8 @@ public class Faker {
                 System.out.println(meal + " hasn't 5 chars it has: " + meal.length() + " chars and is expected: Sandwich");
             }
         }
+
+
     }
 
 }
