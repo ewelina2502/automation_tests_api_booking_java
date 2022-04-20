@@ -22,11 +22,10 @@ public class BookingTests extends Data {
 /*    String url = urlBooking();
       String body = printJsonBooking();
  */
-        String contentType = "application/json";
 
         Response response = RestAssured.
                 given().
-                contentType(contentType).
+                contentType(contentType()).
                 body(printJsonBooking()).
                 when().
                 post(urlBooking()).
@@ -42,7 +41,6 @@ public class BookingTests extends Data {
     @Test
     public void getBookingsReturns() {
         Response response = get(urlBooking());
-
         System.out.println("status code: " + response.getStatusCode());
         System.out.println("Body :" + response.getBody().asString());
 
@@ -73,11 +71,10 @@ public class BookingTests extends Data {
     @Test
     public void postWithJson() {
         File file = new File("C:\\Users\\Ewelina\\api_tests_booking\\src\\test\\java\\create_booking.json");
-        String contentType = "application/json";
 
         Response response = RestAssured.
                 given().
-                contentType(contentType).
+                contentType(contentType()).
                 body(file).
                 when().
                 post(urlBooking()).
@@ -93,7 +90,7 @@ public class BookingTests extends Data {
 
         String firstname = response_get.jsonPath().get("firstname");
         Assert.assertEquals("Ewelina", firstname);
-        System.out.println("firstname: " + firstname);
+        System.out.println("Test PASSED becouse firstname = " + firstname);
     }
 
     @Test
@@ -245,7 +242,6 @@ public class BookingTests extends Data {
     @Test
     public void getBookingsReturnsBadUrl() {
         Response response = get("https://restful-booker.herokuapp.com/bookings");
-
         System.out.println("Response: " + response.asString());
         System.out.println("status code: " + response.getStatusCode());
         System.out.println("Body: " + response.getBody().asString());
@@ -256,10 +252,9 @@ public class BookingTests extends Data {
     @Test
     public void getBookingsReturnsBadMethod() {
         Response response = post(urlBooking());
-
         System.out.println("Expected status code: 415" );
         System.out.println("Received status code: " + response.getStatusCode());
-        System.out.println("Body :" + response.getBody().asString());
+        System.out.println("Body: " + response.getBody().asString());
 
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 415);
