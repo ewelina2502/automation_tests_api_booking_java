@@ -34,4 +34,22 @@ public class BookingObject extends Faker {
 
 
      }
+
+    @Test
+    public void getBokingDates(){
+        BookingDates bd = new BookingDates("2023-01-01", "2023-01-01");
+        Gson json = new Gson();
+        String resposne_bd = json.toJson(bd);
+        System.out.println(resposne_bd);
+    }
+
+
+    @Test
+    public void getNewBookingObject(){
+
+
+    }
+
+
 }
+

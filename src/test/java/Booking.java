@@ -92,7 +92,6 @@ public class Booking {
 
 
 
-
       public void info() {
            System.out.println("firstname: " + firstname);
            System.out.println("lastname: " + lastname);
