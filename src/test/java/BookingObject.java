@@ -23,11 +23,14 @@ public class BookingObject extends Faker {
 
      @Test
     public void getBooking(){
-         Booking b = new Booking("Jozef", "Nowakowki", 123, true, "{", "2023-01-01", "2023-01-01", "Lunch" );
+         Booking b = new Booking("Jozef", "Nowakowski", 123, true, "{", "2023-01-01", "2023-01-01", "Lunch" );
          b.getFirstname();
          System.out.println(b.getFirstname());
          b.setFirstname("Damian");
-         System.out.println(b.getFirstname());
+         System.out.println("Update name: " + b.getFirstname());
+         Gson json = new Gson();
+         String response_b = json.toJson(b);
+         System.out.println(response_b);
 
 
      }
