@@ -34,7 +34,7 @@ public class BookingTests extends Data {
                 response();
 
         Assert.assertEquals(response.getStatusCode(),200);
-        System.out.println("Body: " + response.getBody().asString());
+//        System.out.println("Body: " + response.getBody().asString());
         System.out.println(response.getBody().asPrettyString());
     }
 
@@ -70,7 +70,7 @@ public class BookingTests extends Data {
 
     @Test
     public void postWithJson() {
-        File file = new File("C:\\Users\\Ewelina\\api_tests_booking\\src\\test\\java\\create_booking.json");
+        File file = new File("C:\\Users\\Ewelina\\IdeaProjects\\automation_tests_api_booking_java\\src\\test\\java\\create_booking.json");
 
         Response response = RestAssured.
                 given().
