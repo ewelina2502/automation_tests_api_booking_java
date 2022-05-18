@@ -1,47 +1,18 @@
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.google.gson.Gson;
-import io.restassured.mapper.ObjectMapper;
 
-import java.util.Map;
 
 public class Booking {
 
-    private String firstname;
-    private String lastname;
-    private int totalprice;
-    private boolean depositpaid;
-    private String bookingdates;
-    private String checkin;
-    private String checkout;
-    private String additionalneeds;
+      public String firstname;
+      public String lastname;
+      public int totalprice;
+      public boolean depositpaid;
+      public String bookingdates;
+      public String checkin;
+      public String checkout;
+      public String additionalneeds;
 
       public Booking() {
             }
-
-    public Booking (String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates, String checkin, String checkout, String additionalneeds) {
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.totalprice = totalprice;
-            this.depositpaid = depositpaid;
-            this.bookingdates = bookingdates;
-            this.checkin = checkin;
-            this.checkout = checkout;
-            this.additionalneeds = additionalneeds;
-      }
-
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", totalprice=" + totalprice +
-                ", depositpaid=" + depositpaid +
-                ", bookingdates='" + bookingdates + '\'' +
-                ", checkin='" + checkin + '\'' +
-                ", checkout='" + checkout + '\'' +
-                ", additionalneeds='" + additionalneeds + '\'' +
-                '}';
-    }
 
     public String getFirstname() {
         return firstname;
@@ -107,7 +78,22 @@ public class Booking {
         this.additionalneeds = additionalneeds;
     }
 
-    public void info() {
+    public Booking (String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates, String checkin, String checkout, String additionalneeds) {
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.totalprice = totalprice;
+            this.depositpaid = depositpaid;
+            this.bookingdates = bookingdates;
+            this.checkin = checkin;
+            this.checkout = checkout;
+            this.additionalneeds = additionalneeds;
+
+      }
+
+
+
+
+      public void info() {
            System.out.println("firstname: " + firstname);
            System.out.println("lastname: " + lastname);
            System.out.println("totalprice: " + totalprice);
