@@ -1,4 +1,4 @@
-
+import com.solidfire.gson.Gson;
 
 public class Booking {
 
@@ -10,9 +10,23 @@ public class Booking {
       public String checkin;
       public String checkout;
       public String additionalneeds;
+      public char sign;
 
       public Booking() {
             }
+
+    public Booking (String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates, String additionalneeds) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.totalprice = totalprice;
+        this.depositpaid = depositpaid;
+        this.bookingdates = bookingdates;
+//        this.sign = sign;
+//        this.checkin = checkin;
+//        this.checkout = checkout;
+        this.additionalneeds = additionalneeds;
+
+    }
 
     public String getFirstname() {
         return firstname;
@@ -77,18 +91,6 @@ public class Booking {
     public void setAdditionalneeds(String additionalneeds) {
         this.additionalneeds = additionalneeds;
     }
-
-    public Booking (String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates, String checkin, String checkout, String additionalneeds) {
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.totalprice = totalprice;
-            this.depositpaid = depositpaid;
-            this.bookingdates = bookingdates;
-            this.checkin = checkin;
-            this.checkout = checkout;
-            this.additionalneeds = additionalneeds;
-
-      }
 
 
 
