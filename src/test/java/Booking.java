@@ -1,5 +1,3 @@
-import com.solidfire.gson.Gson;
-
 public class Booking {
 
       public String firstname;
@@ -10,7 +8,7 @@ public class Booking {
       public String checkin;
       public String checkout;
       public String additionalneeds;
-      public char sign;
+
 
       public Booking() {
             }
@@ -21,12 +19,11 @@ public class Booking {
         this.totalprice = totalprice;
         this.depositpaid = depositpaid;
         this.bookingdates = bookingdates;
-//        this.sign = sign;
 //        this.checkin = checkin;
 //        this.checkout = checkout;
         this.additionalneeds = additionalneeds;
-
     }
+
 
     public String getFirstname() {
         return firstname;
