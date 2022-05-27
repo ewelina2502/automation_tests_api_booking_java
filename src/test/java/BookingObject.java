@@ -18,7 +18,7 @@ public class BookingObject extends Faker {
 
     @Test
     public void getNewBooking(){
-        BookingSecond b3 = new BookingSecond("2022-02-01", "2022-02-01");
+        BookingSecondObject b3 = new BookingSecondObject("2022-02-01", "2022-02-01");
         Gson json = new Gson();
         String booking3 = json.toJson(b3);
 
@@ -31,7 +31,7 @@ public class BookingObject extends Faker {
 
     @Test
     public String getBookingDates() {
-        BookingSecond b2 = new BookingSecond("2022-02-01", "2022-02-01");
+        BookingSecondObject b2 = new BookingSecondObject("2022-02-01", "2022-02-01");
         Gson json = new Gson();
         return json.toJson(b2);
     }
@@ -40,7 +40,7 @@ public class BookingObject extends Faker {
     public void getPojoFromJson() {
         String jsonText = "{\"checkin\":\"2024-02-01\",\"checkout\":\"2024-04-04\"}";
         Gson gson = new Gson();
-        BookingSecond jb = gson.fromJson(jsonText,BookingSecond.class);
+        BookingSecondObject jb = gson.fromJson(jsonText, BookingSecondObject.class);
         System.out.println(jb.checkin + " " + jb.checkout);
     }
 
@@ -52,5 +52,14 @@ public class BookingObject extends Faker {
          System.out.println(booking1);
      }
 
+     @Test
+    public void getAndSetBookingLombok(){
+         BookingLombokObject bl = new BookingLombokObject("Jozef", "Nowakowski", 123, true, "2033-02-06", "2033-01-01",  "Lunch" );
+         bl.setFirstname("LombokName");
+         Gson blJson = new Gson();
+         String blJ = blJson.toJson(bl);
+         System.out.println(blJ);
+
+     }
 
 }

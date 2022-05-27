@@ -1,10 +1,10 @@
-public class BookingSecond {
+public class BookingSecondObject {
 
     public String checkin;
     public String checkout;
 
 
-    public BookingSecond(String checkin, String checkout) {
+    public BookingSecondObject(String checkin, String checkout) {
         this.checkin = checkin;
         this.checkout = checkout;
     }
