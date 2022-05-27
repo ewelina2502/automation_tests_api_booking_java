@@ -1,3 +1,4 @@
+import datas.Data;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -70,7 +71,7 @@ public class BookingTests extends Data {
 
     @Test
     public void postWithJson() {
-        File file = new File("C:\\Users\\Ewelina\\IdeaProjects\\automation_tests_api_booking_java\\src\\test\\java\\create_booking.json");
+        File file = new File("C:\\Users\\eweli\\IdeaProjects\\automation_tests_api_booking_java\\src\\test\\java\\datas\\create_booking.json");
 
         Response response = RestAssured.
                 given().

@@ -1,3 +1,5 @@
+package objects;
+
 public class BookingSecondObject {
 
     public String checkin;

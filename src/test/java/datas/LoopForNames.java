@@ -1,3 +1,6 @@
+package datas;
+
+import datas.Faker;
 import org.testng.annotations.Test;
 
 import java.util.Random;

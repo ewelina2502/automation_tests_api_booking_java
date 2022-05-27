@@ -1,3 +1,5 @@
+package datas;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -40,12 +42,12 @@ public class Data extends Faker {
     }
 
     public static String printJsonBooking() {
-        String names = printFirstNameNorway();
-        String lnames = printLastNameNorway();
-        String needs = printNeeds();
-        int generator = printGenerator();
-        String date = printDate();
-        String datetomorrow = printTomorrow();
+        String names = Faker.printFirstNameNorway();
+        String lnames = Faker.printLastNameNorway();
+        String needs = Faker.printNeeds();
+        int generator = Faker.printGenerator();
+        String date = Faker.printDate();
+        String datetomorrow = Faker.printTomorrow();
 
         return "{" +
                 " \"firstname\": " + '"' + names + '"' + ","+
@@ -60,12 +62,12 @@ public class Data extends Faker {
     }
 
     public static String printJsonPutBooking() {
-        String names = printFirstNameNorway();
-        String lnames = printLastNameNorway();
-        String needs = printNeeds();
-        int generator = printGenerator();
-        String date = printDate();
-        String datetomorrow = String.valueOf(printTomorrow());
+        String names = Faker.printFirstNameNorway();
+        String lnames = Faker.printLastNameNorway();
+        String needs = Faker.printNeeds();
+        int generator = Faker.printGenerator();
+        String date = Faker.printDate();
+        String datetomorrow = String.valueOf(Faker.printTomorrow());
 
         return "{" +
                 " \"firstname\": " +  '"' + names + "up" +'"' + "," +
@@ -80,8 +82,8 @@ public class Data extends Faker {
     }
 
     public static String printJsonPatchbooking() {
-        String names = printUuid();
-        String lnames = printSpecjalSign();
+        String names = Faker.printUuid();
+        String lnames = Faker.printSpecjalSign();
 
         return "{" +
                 " \"firstname\": " + '"' + names + '"' + ","+
@@ -116,11 +118,11 @@ public class Data extends Faker {
     }
 
     public static String printAssertJsonBooking() {
-        String lnames = printLastNameNorway();
-        String needs = printNeeds();
-        int generator = printGenerator();
-        String date = printDate();
-        String datetomorrow = printTomorrow();
+        String lnames = Faker.printLastNameNorway();
+        String needs = Faker.printNeeds();
+        int generator = Faker.printGenerator();
+        String date = Faker.printDate();
+        String datetomorrow = Faker.printTomorrow();
 
         return "{" +
                 " \"firstname\": \"Aldona\"," +
@@ -135,7 +137,7 @@ public class Data extends Faker {
     }
 
 //    public static String jsonObject() {
-//        Booking first_booking = new Booking("Adam", "Kowalski", 123, true,  "{","2022-01-28", "2022-01-28}", "Breakfast" );
+//        objects.Booking first_booking = new objects.Booking("Adam", "Kowalski", 123, true,  "{","2022-01-28", "2022-01-28}", "Breakfast" );
 //        Gson json = new Gson();
 //        return json.toJson(first_booking);
 //    }

@@ -1,8 +1,12 @@
+package objects;
+
 import com.solidfire.gson.Gson;
+import objects.Booking;
+import objects.BookingLombokObject;
 import org.junit.jupiter.api.Test;
 
 
-public class BookingObject extends Faker {
+public class BookingObject extends datas.Faker {
 
 
      @Test
@@ -59,7 +63,8 @@ public class BookingObject extends Faker {
          Gson blJson = new Gson();
          String blJ = blJson.toJson(bl);
          System.out.println(blJ);
-
      }
+
+
 
 }

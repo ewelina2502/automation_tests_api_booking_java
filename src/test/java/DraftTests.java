@@ -1,11 +1,10 @@
+import datas.Data;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
-
-public class DraftTests extends Data {
+public class DraftTests extends datas.Data {
 
     @Test
     public void postAndDeleteBooking() {

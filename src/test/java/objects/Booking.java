@@ -1,3 +1,5 @@
+package objects;
+
 public class Booking {
 
       public String firstname;
